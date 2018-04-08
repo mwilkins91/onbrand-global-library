@@ -14,9 +14,6 @@ function printHTML(url, resourceType, i) {
     break;
   case 'styles':
     tagName = 'link';
-    urlAttribute = 'href';
-    relAttribute = 'rel';
-    relValue = '';
     attributes.push(
       ['type', 'text/css'],
       ['rel', 'stylesheet'],
