@@ -2,7 +2,7 @@
   "name": "onbrandgloballibrary",
   "version": "1.0.0",
   "description": "A collection of code to execute at the top of any onbrand page.",
-  "main": "build/onbrandUtilityFunctions.bundle.js",
+  "main": "build/onbrand-global-library.bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
