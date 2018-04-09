@@ -31,16 +31,6 @@ function printHTML(url, resourceType, i) {
   return tag;
 }
 
-/**
- * Ensure a trailing slash and no leading slash are preasent on the folder
- * @param {String} string
- */
-function normalizeSlashes(string) {
-  let normalizedString = string;
-  if (normalizedString[0] === '/') normalizedString = normalizedString.slice(1, string.length);
-  if (normalizedString[normalizedString.length - 1] !== '/') normalizedString += '/';
-  return normalizedString;
-}
 
 /**
  * remove slashes from the front and end of a string
@@ -55,7 +45,7 @@ function removeSlashes(string) {
 
 class Onbrand {
   constructor(options) {
-    this.cihostFolder = normalizeSlashes(options.cihostFolder);
+    this.cihostFolder = removeSlashes(options.cihostFolder);
     this.queryStringIncluded = Onbrand.checkForQueryString();
     this.mode = this.queryStringIncluded ? 'development' : 'production';
     this.styles = this.generateUrls(options.styles);
@@ -69,7 +59,7 @@ class Onbrand {
     return false;
   }
   generateUrls(arrayOfFileNames) {
-    const urlBase = this.mode === 'development' ? '/build/' : `//cihost.uberflip.com/${this.cihostFolder}`;
+    const urlBase = this.mode === 'development' ? '/build/' : `//cihost.uberflip.com/${this.cihostFolder}/build/`;
     return arrayOfFileNames.map(fileName => urlBase + removeSlashes(fileName));
   }
   printResources(type) {
