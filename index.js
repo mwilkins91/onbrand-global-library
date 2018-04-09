@@ -27,10 +27,9 @@ function printHTML(url, resourceType, i) {
   attributes.push(['id', `onbrand-resource-${tagName}-${i}`]);
   const tag = document.createElement(tagName);
   attributes.forEach(attrPair => tag.setAttribute(attrPair[0], attrPair[1]));
-  // const allScriptTags = document.getElementsByTagName('script');
-  // const currScript = allScriptTags[allScriptTags.length - 1];
 
-  // Add the tags directly following the script tag the function was called in
+  // We have to use document.write, using dom manipulation to add a link/script tag
+  // will cause an very obvious visual flicker / delay. :(
   document.write(tag.outerHTML);
 }
 
