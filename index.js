@@ -35,7 +35,7 @@ class Onbrand {
   constructor(options) {
     this.cihostFolder = options.cihostFolder;
     this.queryStringIncluded = Onbrand.checkForQueryString();
-    this.mode = this.queryStringIncluded ? 'devlopment' : 'production';
+    this.mode = this.queryStringIncluded ? 'development' : 'production';
     this.styles = this.generateUrls(options.styles);
     this.scripts = this.generateUrls(options.scripts);
   }
