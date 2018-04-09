@@ -31,7 +31,7 @@ function printHTML(url, resourceType, i) {
   // const currScript = allScriptTags[allScriptTags.length - 1];
 
   // Add the tags directly following the script tag the function was called in
-  document.write(tag);
+  document.write(tag.outerHTML);
 }
 
 
