@@ -42,6 +42,17 @@ function normalizeSlashes(string) {
   return normalizedString;
 }
 
+/**
+ * remove slashes from the front and end of a string
+ * @param {String} string
+ */
+function removeSlashes(string) {
+  let normalizedString = string;
+  if (normalizedString[0] === '/') normalizedString = normalizedString.slice(1, string.length);
+  if (normalizedString[normalizedString.length - 1] === '/') normalizedString = normalizedString.slice(0, string.length - 1);
+  return normalizedString;
+}
+
 class Onbrand {
   constructor(options) {
     this.cihostFolder = normalizeSlashes(options.cihostFolder);
@@ -59,7 +70,7 @@ class Onbrand {
   }
   generateUrls(arrayOfFileNames) {
     const urlBase = this.mode === 'development' ? '/build/' : `//cihost.uberflip.com/${this.cihostFolder}`;
-    return arrayOfFileNames.map(fileName => urlBase + fileName);
+    return arrayOfFileNames.map(fileName => urlBase + removeSlashes(fileName));
   }
   printResources(type) {
     const resourceType = type.toLowerCase().trim();
