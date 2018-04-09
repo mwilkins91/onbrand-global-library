@@ -58,7 +58,7 @@ class Onbrand {
     return false;
   }
   generateUrls(arrayOfFileNames) {
-    const urlBase = this.mode === 'development' ? '/build/' : `//cihost.uberflip.com/${this.cihostFolder}/`;
+    const urlBase = this.mode === 'development' ? '/build/' : `//cihost.uberflip.com/${this.cihostFolder}`;
     return arrayOfFileNames.map(fileName => urlBase + fileName);
   }
   printResources(type) {
