@@ -27,8 +27,11 @@ function printHTML(url, resourceType, i) {
   attributes.push(['id', `onbrand-resource-${tagName}-${i}`]);
   const tag = document.createElement(tagName);
   attributes.forEach(attrPair => tag.setAttribute(attrPair[0], attrPair[1]));
-  console.log(tag);
-  return tag;
+  const allScriptTags = document.getElementsByTagName('script');
+  const currScript = allScriptTags[allScriptTags.length - 1];
+
+  // Add the tags directly following the script tag the function was called in
+  currScript.parentNode.appendChild(tag);
 }
 
 
