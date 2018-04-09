@@ -37,7 +37,7 @@ function printHTML(url, resourceType, i) {
  */
 function normalizeSlashes(string) {
   let normalizedString = string;
-  if (normalizedString[1] === '/') normalizedString = normalizedString.slice(1, string.length);
+  if (normalizedString[0] === '/') normalizedString = normalizedString.slice(1, string.length);
   if (normalizedString[normalizedString.length - 1] !== '/') normalizedString += '/';
   return normalizedString;
 }
