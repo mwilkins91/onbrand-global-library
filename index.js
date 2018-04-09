@@ -31,9 +31,20 @@ function printHTML(url, resourceType, i) {
   return tag;
 }
 
+/**
+ * Ensure a trailing slash and no leading slash are preasent on the folder
+ * @param {String} string
+ */
+function normalizeSlashes(string) {
+  let normalizedString = string;
+  if (normalizedString[1] === '/') normalizedString = normalizedString.slice(1, string.length);
+  if (normalizedString[normalizedString.length - 1] !== '/') normalizedString += '/';
+  return normalizedString;
+}
+
 class Onbrand {
   constructor(options) {
-    this.cihostFolder = options.cihostFolder;
+    this.cihostFolder = normalizeSlashes(options.cihostFolder);
     this.queryStringIncluded = Onbrand.checkForQueryString();
     this.mode = this.queryStringIncluded ? 'development' : 'production';
     this.styles = this.generateUrls(options.styles);
